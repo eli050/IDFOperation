@@ -18,11 +18,11 @@ namespace IDFOperation.IDFClasses
     }
    public abstract class AttackOption
     {
-        private string uniqueName;
-        private int ammunitionCapacity;
-        private long fuelSupply;
-        private List<string> effectiveAgainst;
-        private string bombType;
+        protected string uniqueName;
+        protected int ammunitionCapacity;
+        protected long fuelSupply;
+        protected List<string> effectiveAgainst;
+        protected string bombType;
         public AttackOption(string UniqeName ,
             int AmmunitionCapacity, long FuelSupply,
             List<string> EffectiveAgainst, string BombType)
@@ -32,6 +32,39 @@ namespace IDFOperation.IDFClasses
             fuelSupply = FuelSupply;
             effectiveAgainst = EffectiveAgainst;
             bombType = BombType;
+        }
+    }
+    public class Fighter: AttackOption
+    {
+        public Fighter(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType): base(UniqeName ,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
+        }
+    }
+    public class Drone: AttackOption
+    {
+        public Drone(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType) : base(UniqeName,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
+        }
+    }
+    public class Artillery : AttackOption
+    {
+        public Artillery(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType) : base(UniqeName,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
         }
     }
 }
