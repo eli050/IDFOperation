@@ -14,12 +14,20 @@ namespace IDFOperation.IDFClasses
             currentCommander = CurrentCommander;
             attacks = Attacks;
         }
+        public bool AddStrike(AttackOption strike)
+        {
+            return true;
+        }
+        public Dictionary<string,int> GetStrikeAndCount()
+        {
+            return new Dictionary<string, int>();
+        }
 
     }
    public abstract class AttackOption
     {
         protected string uniqueName;
-        protected int ammunitionCapacity;
+        public int ammunitionCapacity;
         protected long fuelSupply;
         protected List<string> effectiveAgainst;
         protected string bombType;
