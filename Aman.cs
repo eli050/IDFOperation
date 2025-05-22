@@ -8,6 +8,12 @@ namespace IDFOperation.AmanClasses
     {
         private List < IntelligenceMessage > IntelligenceMessages = new List < IntelligenceMessage >();
 
+        //Method for adding intelligence information to a list
+        public void AddIntelligance(IntelligenceMessage massage)
+        {
+            IntelligenceMessages.Add(massage);
+        }
+
         //Returns a dictionary whose key is terrorist and whose value is the number of intelligence messages it has.
         public Dictionary<string, int> TerroristsInformation()
         {
@@ -32,7 +38,13 @@ namespace IDFOperation.AmanClasses
             return mostDangoursTerrorist;
         }
 
-        //Method for adding intelligence information to a list
+        //Receives a terrorist and returns the latest information about him
+        public IntelligenceMessage TheLastIntelligance()
+        {
+
+        }
+
+        
     }
     //Defines intelligence information
     public class IntelligenceMessage
