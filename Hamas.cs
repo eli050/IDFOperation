@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace IDFOperation.HamasClasses
 {
+    //Provides information about the Hamas terror closet
     public class Hamas
     {
         private string commander;
@@ -19,8 +20,8 @@ namespace IDFOperation.HamasClasses
     }
     public class Terrorist
     {
-        private string name;
-        private int runk;
+        public string name { get; }
+        public int runk { get; }
         private string status;
         private List <string> weapons;
         public Terrorist(string Name, int Runk, string Status, List< string> Weapons)
@@ -30,5 +31,7 @@ namespace IDFOperation.HamasClasses
             weapons = Weapons;
             status = Status;
         }
+
+        public 
     }
 }

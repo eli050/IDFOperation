@@ -8,6 +8,30 @@ namespace IDFOperation.AmanClasses
     {
         private List < IntelligenceMessage > IntelligenceMessages = new List < IntelligenceMessage >();
 
+        //Returns a dictionary whose key is terrorist and whose value is the number of intelligence messages it has.
+        public Dictionary<string, int> TerroristsInformation()
+        {
+            // ...
+            Dictionary<string, int> terroristsInformation = new Dictionary<string, int>();
+            return terroristsInformation;
+        }
+
+        //Returns the terrorist with the largest number of messages
+        public string DangerousTrrorist()
+        {
+            //...
+            string dangerousTerrorist;
+            return dangerousTerrorist;
+        }
+
+        //Receiving a list of terrorists returns the most dangerous terrorist
+        public Terrorist MostDangoursTerrorist()
+        {
+            //...
+            Terrorist mostDangoursTerrorist;
+            return mostDangoursTerrorist;
+        }
+
         //Method for adding intelligence information to a list
     }
     //Defines intelligence information
