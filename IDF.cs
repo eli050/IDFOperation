@@ -1,0 +1,91 @@
+﻿using System;
+
+namespace IDFOperation.IDFClasses
+{
+    public class IDF
+    {
+        private string dateOfEstablishment;
+        private string currentCommander;
+        private List<AttackOption> attacks;
+        public IDF(string DateOfEstablishment, string CurrentCommander 
+            , List<AttackOption> Attacks)
+        {
+            dateOfEstablishment = DateOfEstablishment;
+            currentCommander = CurrentCommander;
+            attacks = Attacks;
+        }
+        public bool AddStrike(AttackOption strike)
+        {
+            attacks.Add(strike);
+            return true;
+        }
+        public Dictionary<string,int> GetStrikeAndArsenal()
+        {
+            Dictionary<string, int> arsenal = new Dictionary<string, int>();
+            foreach(AttackOption attack in attacks)
+            {
+                if (arsenal.ContainsKey(attack.uniqueName))
+                {
+                    arsenal[$"{attack.uniqueName}2"] = attack.ammunitionCapacity;
+                }
+                else
+                {
+                    arsenal[attack.uniqueName] = attack.ammunitionCapacity;
+                }
+            }
+            return arsenal;
+        }
+
+    }
+   public abstract class AttackOption
+    {
+        public string uniqueName { get; }
+        public int ammunitionCapacity;
+        protected long fuelSupply;
+        protected List<string> effectiveAgainst;
+        protected string bombType;
+        public AttackOption(string UniqeName ,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType)
+        {
+            uniqueName = UniqeName;
+            ammunitionCapacity = AmmunitionCapacity;
+            fuelSupply = FuelSupply;
+            effectiveAgainst = EffectiveAgainst;
+            bombType = BombType;
+        }
+    }
+    public class Fighter: AttackOption
+    {
+        public Fighter(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType): base(UniqeName ,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
+        }
+    }
+    public class Drone: AttackOption
+    {
+        public Drone(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType) : base(UniqeName,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
+        }
+    }
+    public class Artillery : AttackOption
+    {
+        public Artillery(string UniqeName,
+            int AmmunitionCapacity, long FuelSupply,
+            List<string> EffectiveAgainst, string BombType) : base(UniqeName,
+                AmmunitionCapacity, FuelSupply,
+                EffectiveAgainst, BombType)
+        {
+
+        }
+    }
+}

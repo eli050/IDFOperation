@@ -11,25 +11,48 @@ namespace IDFOperation.HamasClasses
     {
         private string commander;
         private string YearOfEstablishment = "1988";
-        private List<Terrorist> terrorists;
+        public List<Terrorist> terrorists;
         public Hamas(string Commander, List<Terrorist> Terrorists)
         {
             commander = Commander;
             terrorists = Terrorists;
         }
+        public bool AddTeroris(Terrorist terorist)
+        {
+            terrorists.Add(terorist);
+            return true;
+        }
     }
     public class Terrorist
     {
         public string name { get; }
-        public int runk { get; }
-        private string status;
+        public int runk { get;}
+        public string status { get; }
         private List <string> weapons;
+        Dictionary<string, int> weaponRating;
+        public int riskRating;
         public Terrorist(string Name, int Runk, string Status, List< string> Weapons)
         {
             name = Name;
             runk = Runk;
             weapons = Weapons;
             status = Status;
+            weaponRating = new Dictionary<string, int>();
+        }
+        public int RiskRating()
+        {
+            int dangerous = runk * _WeaponsRating();
+            riskRating = dangerous;
+            return dangerous;
+        }
+        private int _WeaponsRating()
+        {
+            int sumRating = 0;
+            foreach(string weapon in weapons)
+            {
+                sumRating += weaponRating[weapon];
+            }
+            return sumRating;
         }
 
         public 
