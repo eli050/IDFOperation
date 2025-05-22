@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace IDFOperation.HamasClasses
 {
+    //Provides information about the Hamas terror closet
     public class Hamas
     {
         private string commander;
@@ -19,30 +20,32 @@ namespace IDFOperation.HamasClasses
     }
     public class Terrorist
     {
-        private string name;
-        private int runk;
-        private string status;
+        public string name { get; }
+        public int runk { get; }
+        public string status { get; }
         private List <string> weapons;
+        Dictionary<string, int> weaponRating;
         public Terrorist(string Name, int Runk, string Status, List< string> Weapons)
         {
             name = Name;
             runk = Runk;
             weapons = Weapons;
             status = Status;
-            Dictionary<string, int> weaponRating = new Dictionary<string, int>();
+            weaponRating = new Dictionary<string, int>();
         }
         public int RiskRating()
         {
-            int dangerous = 0;
+            int dangerous = runk * WeaponsRating();
             return dangerous;
         }
         public int WeaponsRating()
         {
+            int sumRating = 0;
             foreach(string weapon in weapons)
             {
-                return 0;
+                sumRating += weaponRating[weapon];
             }
-            return 0;
+            return sumRating;
         }
     }
 }
