@@ -1,5 +1,6 @@
 ﻿using System;
 using IDFOperation.AmanClasses;
+using IDFOperation.HamasClasses;
 using IDFOperation.IDFClasses;
 namespace IDFOperation
 {
@@ -9,11 +10,9 @@ namespace IDFOperation
         {
 
         }
-        static void Menu()
+        static void Menu(Aman aman , IDF idf)
         {
             bool NotExit = true;
-            Aman aman = new Aman();
-            IDF idf = new IDF();
             do
             {
                 PrintMenu();
@@ -24,10 +23,15 @@ namespace IDFOperation
                         Console.WriteLine(aman.IntelligenceAnalysis());
                         break;
                     case "b":
-                        Console.WriteLine(idf.GetStrikeAndArsenal());
+                        Dictionary<string, int> arsenal = idf.GetStrikeAndArsenal();
+                        foreach (string strike in arsenal.Keys)
+                        {
+                            Console.WriteLine($"Attack unit {strike} contains {arsenal[strike]} attacks.");
+                        }
                         break;
                     case "c":
-                        Console.WriteLine(aman.MostDangoursTerrorist());
+                        Terrorist dangourTerrorist = aman.MostDangoursTerrorist();
+                        Console.WriteLine($"the most dangours terrorist is {dangourTerrorist.name}");
                         break;
                     case "d":
                         break;
