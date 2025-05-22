@@ -26,7 +26,7 @@ namespace IDFOperation.HamasClasses
     public class Terrorist
     {
         public string name { get; }
-        public int runk { get; }
+        public int runk { get;}
         public string status { get; }
         private List <string> weapons;
         Dictionary<string, int> weaponRating;
@@ -54,5 +54,7 @@ namespace IDFOperation.HamasClasses
             }
             return sumRating;
         }
+
+        public 
     }
 }
