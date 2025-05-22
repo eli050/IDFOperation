@@ -29,6 +29,20 @@ namespace IDFOperation.HamasClasses
             runk = Runk;
             weapons = Weapons;
             status = Status;
+            Dictionary<string, int> weaponRating = new Dictionary<string, int>();
+        }
+        public int RiskRating()
+        {
+            int dangerous = 0;
+            return dangerous;
+        }
+        public int WeaponsRating()
+        {
+            foreach(string weapon in weapons)
+            {
+                return 0;
+            }
+            return 0;
         }
     }
 }
