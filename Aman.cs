@@ -6,7 +6,12 @@ namespace IDFOperation.AmanClasses
     // intelligance class - Intelligence Management
     public class Aman
     {
-        private List < IntelligenceMessage > IntelligenceMessages = new List < IntelligenceMessage >();
+        private List<IntelligenceMessage> intelligenceMessages ;
+        public Aman(List <IntelligenceMessage> IntelligenceMessages)
+        {
+            intelligenceMessages = IntelligenceMessages;
+            private Dictionary<string, int> terroristInformation = TerroristsInformation();
+        }
 
         //Method for adding intelligence information to a list
         public void AddIntelligance(IntelligenceMessage massage)
@@ -15,17 +20,27 @@ namespace IDFOperation.AmanClasses
         }
 
         //Returns a dictionary whose key is terrorist and whose value is the number of intelligence messages it has.
-        public Dictionary<string, int> TerroristsInformation()
+        static private Dictionary<string, int> TerroristsInformation()
         {
-            // ...
             Dictionary<string, int> terroristsInformation = new Dictionary<string, int>();
+            foreach(IntelligenceMessage massege in IntelligenceMessages)
+            {
+                if (terroristsInformation.ContainsKey(massege.terrorist.name)
+                {
+                    terroristsInformation[massege.terrorist.name] = 1;
+                }
+                else
+                {
+                    terroristsInformation[massege.terrorist.name] += 1;
+                }
+            }
             return terroristsInformation;
         }
 
         //Returns the terrorist with the largest number of messages
-        public string DangerousTrrorist()
+        public string IntelligenceAnalysis()
         {
-            //...
+            string maxKey = 
             string dangerousTerrorist;
             return dangerousTerrorist;
         }
@@ -49,7 +64,7 @@ namespace IDFOperation.AmanClasses
     //Defines intelligence information
     public class IntelligenceMessage
     {
-        private Terrorist terrorist;
+        public Terrorist terrorist { get; }
         private string lastLocation;
         private string timeStemp;
         public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, string TimeStemp)
