@@ -14,12 +14,33 @@ namespace IDFOperation.IDFClasses
             currentCommander = CurrentCommander;
             attacks = Attacks;
         }
+        public bool AddStrike(AttackOption strike)
+        {
+            attacks.Add(strike);
+            return true;
+        }
+        public Dictionary<string,int> GetStrikeAndArsenal()
+        {
+            Dictionary<string, int> arsenal = new Dictionary<string, int>();
+            foreach(AttackOption attack in attacks)
+            {
+                if (arsenal.ContainsKey(attack.uniqueName))
+                {
+                    arsenal[$"{attack.uniqueName}2"] = attack.ammunitionCapacity;
+                }
+                else
+                {
+                    arsenal[attack.uniqueName] = attack.ammunitionCapacity;
+                }
+            }
+            return arsenal;
+        }
 
     }
    public abstract class AttackOption
     {
-        protected string uniqueName;
-        protected int ammunitionCapacity;
+        public string uniqueName { get; }
+        public int ammunitionCapacity;
         protected long fuelSupply;
         protected List<string> effectiveAgainst;
         protected string bombType;
