@@ -7,25 +7,27 @@ namespace IDFOperation.AmanClasses
     public class Aman
     {
         private List<IntelligenceMessage> intelligenceMessages ;
+        private Dictionary<string, int> terroristInformation;
         public Aman(List <IntelligenceMessage> IntelligenceMessages)
         {
             intelligenceMessages = IntelligenceMessages;
-            private Dictionary<string, int> terroristInformation = TerroristsInformation();
+            terroristInformation = TerroristsInformation();
         }
+        
 
         //Method for adding intelligence information to a list
         public void AddIntelligance(IntelligenceMessage massage)
         {
-            IntelligenceMessages.Add(massage);
+            intelligenceMessages.Add(massage);
         }
 
         //Returns a dictionary whose key is terrorist and whose value is the number of intelligence messages it has.
-        static private Dictionary<string, int> TerroristsInformation()
+        private Dictionary<string, int> TerroristsInformation()
         {
             Dictionary<string, int> terroristsInformation = new Dictionary<string, int>();
-            foreach(IntelligenceMessage massege in IntelligenceMessages)
+            foreach(IntelligenceMessage massege in intelligenceMessages)
             {
-                if (terroristsInformation.ContainsKey(massege.terrorist.name)
+                if (terroristsInformation.ContainsKey(massege.terrorist.name))
                 {
                     terroristsInformation[massege.terrorist.name] = 1;
                 }
@@ -40,23 +42,49 @@ namespace IDFOperation.AmanClasses
         //Returns the terrorist with the largest number of messages
         public string IntelligenceAnalysis()
         {
-            string maxKey = 
-            string dangerousTerrorist;
-            return dangerousTerrorist;
+            string maxKey = "";
+            int maxValue = 0;
+            foreach(var mostInteligance in terroristInformation)
+            {
+                if (mostInteligance.Value > maxValue)
+                {
+                    maxValue = mostInteligance.Value;
+                    maxKey = mostInteligance.Key;
+                }
+            }
+            return maxKey;
+            
         }
 
         //Receiving a list of terrorists returns the most dangerous terrorist
         public Terrorist MostDangoursTerrorist()
         {
-            //...
-            Terrorist mostDangoursTerrorist;
+            Terrorist mostDangoursTerrorist = null;
+            int score = 0;
+
+            foreach ( IntelligenceMessage massege in intelligenceMessages)
+            {
+                if( massege.terrorist.riskRating > score )
+                {
+                    score = massege.terrorist.riskRating;
+                    mostDangoursTerrorist = massege.terrorist;
+                }
+            }
             return mostDangoursTerrorist;
         }
 
         //Receives a terrorist and returns the latest information about him
-        public IntelligenceMessage TheLastIntelligance()
+        public IntelligenceMessage TheLastIntelligance( Terrorist terrorist)
         {
-
+            IntelligenceMessage lastMassage = null;
+            foreach (IntelligenceMessage massege in intelligenceMessages)
+            {
+                if ( massege.terrorist.name == terrorist.name)
+                {
+                    lastMassage = massege;
+                }
+            }
+            return lastMassage;
         }
 
         
