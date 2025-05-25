@@ -36,8 +36,9 @@ namespace IDFOperation.IDFClasses
         }
         static IDF StartShow()
         {
-            List<AttackOption> attacks = new List<AttackOption>();
-            IDF show = new IDF("eli", attacks);
+            List<AttackOption> attacks = new List<AttackOption>() {Fighter.StartShow(),
+                Drone.StartShow(),Artillery.StartShow()};
+            IDF show = new IDF("eyal zamir", attacks);
             return show;
         }
 
@@ -59,25 +60,6 @@ namespace IDFOperation.IDFClasses
             effectiveAgainst = EffectiveAgainst;
             bombType = BombType;
         }
-        static AttackOption StartShow()
-        {
-            var valuesByType = new Dictionary<Type,
-                 List<(string uniqueName,
-                       int ammunitionCapacity,
-                       long fuelSupply,
-                       List<string> effectiveAgainst,
-                       string bombType)>>()
-{
-    { typeof(Fighter),   new List<(string,int,long,List<string>,string)>
-                         { ("F16",        8, 12000L, new List<string>{ "Buildings" },                "0.5 t / 1 t GP") } },
-
-    { typeof(Drone),     new List<(string,int,long,List<string>,string)>
-                         { ("Hermes 460", 3,  6000L, new List<string>{ "Personnel", "Light-armor" }, "Modular (HE / AT)") } },
-
-    { typeof(Artillery), new List<(string,int,long,List<string>,string)>
-                         { ("M109",      40,     0L, new List<string>{ "Open terrain" },             "High-explosive shell") } },
-};
-        }
     }
     public class Fighter : AttackOption
     {
@@ -88,6 +70,11 @@ namespace IDFOperation.IDFClasses
                 EffectiveAgainst, BombType)
         {
 
+        }
+        public static Fighter StartShow()
+        {
+            Fighter show = new Fighter("F16", 8, 12000L, new List<string> { "Buildings" }, "0.5 t / 1 t GP");
+            return show;
         }
     }
     public class Drone : AttackOption
@@ -100,6 +87,11 @@ namespace IDFOperation.IDFClasses
         {
 
         }
+        public static Drone StartShow()
+        {
+            Drone show = new Drone("Hermes 460", 3, 6000L, new List<string> { "Personnel", "Light-armor" }, "Modular (HE / AT)");
+            return show;
+        }
     }
     public class Artillery : AttackOption
     {
@@ -110,6 +102,11 @@ namespace IDFOperation.IDFClasses
                 EffectiveAgainst, BombType)
         {
 
+        }
+        public static Artillery StartShow()
+        {
+            Artillery show = new Artillery("M109", 40, 0L, new List<string> { "Open terrain" }, "High-explosive shell");
+            return show;
         }
     }
 }
