@@ -4,13 +4,12 @@ namespace IDFOperation.IDFClasses
 {
     public class IDF
     {
-        private string dateOfEstablishment;
+        public string dateOfEstablishment = "1948";
         private string currentCommander;
         private List<AttackOption> attacks;
-        public IDF(string DateOfEstablishment, string CurrentCommander 
+        public IDF(string CurrentCommander 
             , List<AttackOption> Attacks)
         {
-            dateOfEstablishment = DateOfEstablishment;
             currentCommander = CurrentCommander;
             attacks = Attacks;
         }
@@ -34,6 +33,12 @@ namespace IDFOperation.IDFClasses
                 }
             }
             return arsenal;
+        }
+        static IDF StartShow()
+        {
+            List < AttackOption > attacks = new List<AttackOption>();
+            IDF show = new IDF("eli", attacks);
+            return show;
         }
 
     }
