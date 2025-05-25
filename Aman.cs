@@ -59,15 +59,32 @@ namespace IDFOperation.AmanClasses
         //Receiving a list of terrorists returns the most dangerous terrorist
         public Terrorist MostDangoursTerrorist()
         {
-            //...
-            Terrorist mostDangoursTerrorist;
+            Terrorist mostDangoursTerrorist = null;
+            int score = 0;
+
+            foreach ( IntelligenceMessage massege in intelligenceMessages)
+            {
+                if( massege.terrorist.riskRating > score )
+                {
+                    score = massege.terrorist.riskRating;
+                    mostDangoursTerrorist = massege.terrorist;
+                }
+            }
             return mostDangoursTerrorist;
         }
 
         //Receives a terrorist and returns the latest information about him
-        public IntelligenceMessage TheLastIntelligance()
+        public IntelligenceMessage TheLastIntelligance( Terrorist terrorist)
         {
-
+            IntelligenceMessage lastMassage = null;
+            foreach (IntelligenceMessage massege in intelligenceMessages)
+            {
+                if ( massege.terrorist.name == terrorist.name)
+                {
+                    lastMassage = massege;
+                }
+            }
+            return lastMassage;
         }
 
         
