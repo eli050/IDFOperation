@@ -96,17 +96,10 @@ namespace IDFOperation.AmanClasses
     //Defines intelligence information
     public class IntelligenceMessage
     {
-<<<<<<< HEAD
-        public Terrorist terrorist { get; }
-        public string lastLocation;
-        private string timeStemp;
-        public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, string TimeStemp)
-=======
         public Terrorist terrorist;
         public string lastLocation;
-        private DateTime timeStemp;
+        public DateTime timeStemp;
         public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, DateTime TimeStemp)
->>>>>>> 56b97f1cbc5e65dbfefae8db3ddb6089d8d6f80b
         {
             terrorist = dangourTerroist;
             lastLocation = LastLocation;
