@@ -101,7 +101,17 @@ namespace IDFOperation.AmanClasses
             lastLocation = LastLocation;
             timeStemp = TimeStemp;
         }
+        public static IntelligenceMessage StartShow()
+        {
+            List<DateTime> zmanim = new List<DateTime>
+            {
+                    new DateTime(2025, 5, 25, 10, 15, 0),
+                    new DateTime(2025, 5, 25, 14, 30, 0),
+                    new DateTime(2025, 5, 25, 12, 45, 0),
+                    new DateTime(2025, 5, 25, 18, 10, 0),
+                    new DateTime(2025, 5, 25, 6, 5, 0)
+            };
+        }
 
-        
     }
 }

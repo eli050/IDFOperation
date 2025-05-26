@@ -8,7 +8,7 @@ namespace IDFOperation
     {
         static void Main()
         {
-
+           
         }
         static void Menu(Aman aman , IDF idf)
         {
