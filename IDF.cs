@@ -6,38 +6,42 @@ namespace IDFOperation.IDFClasses
     {
         public string dateOfEstablishment = "1948";
         private string currentCommander;
-        private List<AttackOption> attacks;
+        public Dictionary<string,AttackOption> attacks;
         public IDF(string CurrentCommander
-            , List<AttackOption> Attacks)
+            , Dictionary<string,AttackOption> Attacks)
         {
             currentCommander = CurrentCommander;
             attacks = Attacks;
         }
         public bool AddStrike(AttackOption strike)
         {
-            attacks.Add(strike);
+            attacks[strike.uniqueName] = strike;
             return true;
         }
         public Dictionary<string, int> GetStrikeAndArsenal()
         {
             Dictionary<string, int> arsenal = new Dictionary<string, int>();
-            foreach (AttackOption attack in attacks)
+            foreach (string attack in attacks.Keys)
             {
-                if (arsenal.ContainsKey(attack.uniqueName))
+                if (arsenal.ContainsKey(attack))
                 {
-                    arsenal[$"{attack.uniqueName}2"] = attack.ammunitionCapacity;
+                    arsenal[$"{attack}2"] = attacks[attack].ammunitionCapacity;
                 }
                 else
                 {
-                    arsenal[attack.uniqueName] = attack.ammunitionCapacity;
+                    arsenal[attack] = attacks[attack].ammunitionCapacity;
                 }
             }
             return arsenal;
         }
         static IDF StartShow()
         {
-            List<AttackOption> attacks = new List<AttackOption>() {Fighter.StartShow(),
-                Drone.StartShow(),Artillery.StartShow()};
+            Dictionary<string, AttackOption> attacks = new Dictionary<string, AttackOption>() 
+            {
+                ["F16"] = Fighter.StartShow(),
+                ["Hermes 460"] = Drone.StartShow(),
+                ["M109"] =Artillery.StartShow()
+            };
             IDF show = new IDF("eyal zamir", attacks);
             return show;
         }
@@ -89,7 +93,7 @@ namespace IDFOperation.IDFClasses
         }
         public static Drone StartShow()
         {
-            Drone show = new Drone("Hermes 460", 3, 6000L, new List<string> { "Personnel", "Light-armor" }, "Modular (HE / AT)");
+            Drone show = new Drone("Hermes 460", 3, 6000L, new List<string> { "people", "vehicles" }, "Modular (HE / AT)");
             return show;
         }
     }
@@ -105,7 +109,7 @@ namespace IDFOperation.IDFClasses
         }
         public static Artillery StartShow()
         {
-            Artillery show = new Artillery("M109", 40, 0L, new List<string> { "Open terrain" }, "High-explosive shell");
+            Artillery show = new Artillery("M109", 40, 0L, new List<string> { "open areas" }, "High-explosive shell");
             return show;
         }
     }

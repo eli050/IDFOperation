@@ -6,7 +6,7 @@ namespace IDFOperation.AmanClasses
     // intelligance class - Intelligence Management
     public class Aman
     {
-        private List<IntelligenceMessage> intelligenceMessages ;
+        public List<IntelligenceMessage> intelligenceMessages ;
         private Dictionary<string, int> terroristInformation;
         public Aman(List <IntelligenceMessage> IntelligenceMessages)
         {
@@ -93,7 +93,7 @@ namespace IDFOperation.AmanClasses
     public class IntelligenceMessage
     {
         public Terrorist terrorist { get; }
-        private string lastLocation;
+        public string lastLocation;
         private string timeStemp;
         public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, string TimeStemp)
         {
