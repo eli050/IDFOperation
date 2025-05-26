@@ -8,7 +8,7 @@ namespace IDFOperation
     {
         static void Main()
         {
-
+           
         }
         static void Menu(Aman aman , IDF idf)
         {
@@ -51,7 +51,7 @@ namespace IDFOperation
                 "\nb. Strike Availability, displaying all currently available strike units and their capacity" +
                 "\nc. Target Prioritization, determining the most dangerous terrorist based on a quality rating" +
                 "\nd. Strike Execution, selecting an appropriate strike unit based on the terrorist's location\n" +
-                "e. Exit");
+                "e. Exit\n");
         }
     }
 }
