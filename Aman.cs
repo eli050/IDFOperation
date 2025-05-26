@@ -6,7 +6,7 @@ namespace IDFOperation.AmanClasses
     // intelligance class - Intelligence Management
     public class Aman
     {
-        private List<IntelligenceMessage> intelligenceMessages ;
+        public List<IntelligenceMessage> intelligenceMessages { get; }
         private Dictionary<string, int> terroristInformation;
         public Aman(List <IntelligenceMessage> IntelligenceMessages)
         {
@@ -92,16 +92,55 @@ namespace IDFOperation.AmanClasses
     //Defines intelligence information
     public class IntelligenceMessage
     {
-        public Terrorist terrorist { get; }
-        private string lastLocation;
-        private string timeStemp;
-        public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, string TimeStemp)
+        public Terrorist terrorist;
+        public string lastLocation;
+        private DateTime timeStemp;
+        public IntelligenceMessage( Terrorist dangourTerroist, string LastLocation, DateTime TimeStemp)
         {
             terrorist = dangourTerroist;
             lastLocation = LastLocation;
             timeStemp = TimeStemp;
         }
+        public static IntelligenceMessage StartShow()
+        {
+            
+            List<DateTime> time = new List<DateTime>
+            {
+                new DateTime(2025, 5, 25, 6, 12, 0),
+                new DateTime(2025, 5, 25, 7, 45, 0),
+                new DateTime(2025, 5, 25, 8, 33, 0),
+                new DateTime(2025, 5, 25, 9, 15, 0),
+                new DateTime(2025, 5, 25, 10, 50, 0),
+                new DateTime(2025, 5, 25, 11, 27, 0),
+                new DateTime(2025, 5, 25, 12, 5, 0),
+                new DateTime(2025, 5, 25, 13, 42, 0),
+                new DateTime(2025, 5, 25, 14, 18, 0),
+                new DateTime(2025, 5, 25, 15, 30, 0),
+                new DateTime(2025, 5, 25, 16, 8, 0),
+                new DateTime(2025, 5, 25, 17, 55, 0),
+                new DateTime(2025, 5, 25, 18, 25, 0),
+                new DateTime(2025, 5, 25, 19, 13, 0),
+                new DateTime(2025, 5, 25, 20, 47, 0),
+                new DateTime(2025, 5, 25, 21, 22, 0),
+                new DateTime(2025, 5, 25, 22, 11, 0),
+                new DateTime(2025, 5, 25, 23, 4, 0),
+                new DateTime(2025, 5, 25, 23, 40, 0),
+                new DateTime(2025, 5, 25, 23, 58, 0)
+            };
 
-        
+            List<string> location = new List<string> { "building", "car", "open area" };
+
+            Random rand = new Random();
+            DateTime randomTime = time[rand.Next(20)];
+            string randomPlace = location[rand.Next(3)];
+            Terrorist terrorist = Terrorist.StartShow();
+            IntelligenceMessage newInteliganceMassege = new IntelligenceMessage( terrorist, randomPlace, randomTime);
+            return newInteliganceMassege;
+
+
+
+
+        }
+
     }
 }
