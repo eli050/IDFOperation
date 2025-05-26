@@ -6,11 +6,7 @@ namespace IDFOperation.AmanClasses
     // intelligance class - Intelligence Management
     public class Aman
     {
-<<<<<<< HEAD
         public List<IntelligenceMessage> intelligenceMessages ;
-=======
-        public List<IntelligenceMessage> intelligenceMessages { get; }
->>>>>>> 56b97f1cbc5e65dbfefae8db3ddb6089d8d6f80b
         private Dictionary<string, int> terroristInformation;
         public Aman(List <IntelligenceMessage> IntelligenceMessages)
         {
