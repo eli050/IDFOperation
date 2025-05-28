@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using IDFOperation.HamasClasses;
 
 namespace IDFOperation.AmanClasses
@@ -29,11 +30,11 @@ namespace IDFOperation.AmanClasses
             {
                 if (terroristsInformation.ContainsKey(massege.terrorist.name))
                 {
-                    terroristsInformation[massege.terrorist.name] = 1;
+                    terroristsInformation[massege.terrorist.name] += 1;
                 }
                 else
                 {
-                    terroristsInformation[massege.terrorist.name] += 1;
+                    terroristsInformation[massege.terrorist.name] = 1;
                 }
             }
             return terroristsInformation;
@@ -86,6 +87,17 @@ namespace IDFOperation.AmanClasses
             }
             return lastMassage;
         }
+        public static Aman StartShow ()
+        {
+            List<IntelligenceMessage> listMessages = new List<IntelligenceMessage>();
+            for (int i = 0; i < 5; i++)
+            {
+                IntelligenceMessage message = IntelligenceMessage.StartShow();
+                listMessages.Add(message);
+            }
+            Aman newAman = new Aman(listMessages);
+            return newAman;
+        }
 
         
     }
@@ -101,6 +113,8 @@ namespace IDFOperation.AmanClasses
             lastLocation = LastLocation;
             timeStemp = TimeStemp;
         }
+
+        //Generates an instance of intelligence knowledge with random values
         public static IntelligenceMessage StartShow()
         {
 
