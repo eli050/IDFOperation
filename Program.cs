@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using IDFOperation.AmanClasses;
 using IDFOperation.HamasClasses;
 using IDFOperation.IDFClasses;
@@ -8,9 +9,12 @@ namespace IDFOperation
     {
         static void Main()
         {
-          
+            Aman aman =  Aman.StartShow();
+            IDF idf = IDF.StartShow();
+            Hamas hamas =  Hamas.StartShow();
+            Menu(aman, idf, hamas);
         }
-        static void Menu(Aman aman , IDF idf)
+        static void Menu(Aman aman , IDF idf , Hamas hamas)
         {
             bool NotExit = true;
             do

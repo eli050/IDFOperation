@@ -39,22 +39,28 @@ namespace IDFOperation.HamasClasses
         public int runk { get;}
         public string status { get; }
         private List <string> weapons;
-        Dictionary<string, int> weaponRating;
+      static  Dictionary<string, int> weaponRating = new Dictionary<string, int>
+      {
+          ["knife"] = 1,
+          ["gun"] = 2,
+          ["M16"] = 3,
+          ["AK47"] = 3
+      };
         public int riskRating;
-        public Terrorist(string Name, int Runk, string Status, List< string> Weapons)
+        public Terrorist(string Name, int Runk, string Status, List<string> Weapons)
         {
             name = Name;
             runk = Runk;
             weapons = Weapons;
             status = Status;
             riskRating = RiskRating();
-            weaponRating = new Dictionary<string, int>()
-            {
-                ["knife"] = 1,
-                ["gun"] = 2,
-                ["M16"] = 3,
-                ["AK47"] = 3
-            };
+            //weaponRating = new Dictionary<string, int>()
+            //{
+            //    ["knife"] = 1,
+            //    ["gun"] = 2,
+            //    ["M16"] = 3,
+            //    ["AK47"] = 3
+            //};
         }
         public int RiskRating()
         {
@@ -82,7 +88,7 @@ namespace IDFOperation.HamasClasses
             {
                 "knife",
                 "gun",
-                "F16",
+                "M16",
                 "AK47"
             };
             List<string> gunsT = new List<string>();

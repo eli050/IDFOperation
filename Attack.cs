@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using IDFOperation.AmanClasses;
 using IDFOperation.IDFClasses;
 using IDFOperation.HamasClasses;
@@ -51,3 +52,4 @@ namespace IDFOperation
         }
     }
 }
+*/

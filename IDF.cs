@@ -34,7 +34,7 @@ namespace IDFOperation.IDFClasses
             }
             return arsenal;
         }
-        static IDF StartShow()
+        public static IDF StartShow()
         {
             Dictionary<string, AttackOption> attacks = new Dictionary<string, AttackOption>() 
             {
