@@ -1,5 +1,4 @@
-﻿/*
-using System;
+﻿using System;
 using IDFOperation.AmanClasses;
 using IDFOperation.IDFClasses;
 using IDFOperation.HamasClasses;
@@ -43,14 +42,16 @@ namespace IDFOperation
             Console.WriteLine("Enter oficcer name: ");
             string name = Console.ReadLine()!;
             DateTime dateTime = DateTime.Now;
+            AttackOption attackOption = RelevantUnit();
             Console.WriteLine($"Date of attack: {dateTime}\n" +
                 $"Operations officer: {name}\n" +
-                $" Attack with attack unit {RelevantUnit().uniqueName}\n" +
-                $" on terrorist {dangourTerrorist}\n " +
-                $"with latest location is {lastMessage.lastLocation}\n" +
+                $"Attack with attack unit {attackOption.uniqueName}\n" +
+                $"on terrorist {dangourTerrorist.name}\n " +
+                $"in the latest location is {lastMessage.lastLocation}\n" +
                 $"Time of intelligence receipt: {lastMessage.timeStemp}\n" +
-                $"Ready to execute");      
+                $"Ready to execute");
+            attackOption.ammunitionCapacity -= 1;
+
         }
     }
 }
-*/

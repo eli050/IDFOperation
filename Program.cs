@@ -12,9 +12,10 @@ namespace IDFOperation
             Aman aman =  Aman.StartShow();
             IDF idf = IDF.StartShow();
             Hamas hamas =  Hamas.StartShow();
-            Menu(aman, idf, hamas);
+            Attack attack = new Attack(aman, idf, hamas);
+            Menu(aman, idf, hamas,attack);
         }
-        static void Menu(Aman aman , IDF idf , Hamas hamas)
+        static void Menu(Aman aman , IDF idf , Hamas hamas , Attack attack)
         {
             bool NotExit = true;
             do
@@ -38,6 +39,7 @@ namespace IDFOperation
                         Console.WriteLine($"the most dangours terrorist is {dangourTerrorist.name}");
                         break;
                     case "d":
+                        attack.StartAttack();
                         break;
                     case "e":
                         NotExit = false;
