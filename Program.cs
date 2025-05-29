@@ -8,7 +8,7 @@ namespace IDFOperation
     {
         static void Main()
         {
-            IDF idf = IDF.StartShow();
+          
         }
         static void Menu(Aman aman , IDF idf)
         {
@@ -20,7 +20,7 @@ namespace IDFOperation
                 switch (choice)
                 {
                     case "a":
-                        //Console.WriteLine(aman.IntelligenceAnalysis());
+                        Console.WriteLine(aman.IntelligenceAnalysis());
                         break;
                     case "b":
                         Dictionary<string, int> arsenal = idf.GetStrikeAndArsenal();
@@ -30,8 +30,8 @@ namespace IDFOperation
                         }
                         break;
                     case "c":
-                        //Terrorist dangourTerrorist = aman.MostDangoursTerrorist();
-                        //Console.WriteLine($"the most dangours terrorist is {dangourTerrorist.name}");
+                        Terrorist dangourTerrorist = aman.MostDangoursTerrorist();
+                        Console.WriteLine($"the most dangours terrorist is {dangourTerrorist.name}");
                         break;
                     case "d":
                         break;
