@@ -43,13 +43,13 @@ namespace IDFOperation
             string name = Console.ReadLine()!;
             DateTime dateTime = DateTime.Now;
             AttackOption attackOption = RelevantUnit();
-            Console.WriteLine($"Date of attack: {dateTime}\n" +
-                $"Operations officer: {name}\n" +
-                $"Attack with attack unit {attackOption.uniqueName}\n" +
-                $"on terrorist {dangourTerrorist.name}\n " +
-                $"in the latest location is {lastMessage.lastLocation}\n" +
-                $"Time of intelligence receipt: {lastMessage.timeStemp}\n" +
-                $"Ready to execute");
+            Console.WriteLine($"\nDate of attack: {dateTime}\n" +
+                $"Officer: {name}\n" +
+                $"Attack unit: {attackOption.uniqueName}\n" +
+                $"Target:  {dangourTerrorist.name}\n " +
+                $"Location: {lastMessage.lastLocation}\n" +
+                $"Intel date: {lastMessage.timeStemp}\n" 
+                );
             attackOption.ammunitionCapacity -= 1;
 
         }

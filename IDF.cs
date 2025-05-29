@@ -25,7 +25,7 @@ namespace IDFOperation.IDFClasses
             {
                 if (arsenal.ContainsKey(attack))
                 {
-                    arsenal[$"{attack}2"] = attacks[attack].ammunitionCapacity;
+                    arsenal[attack] += attacks[attack].ammunitionCapacity;
                 }
                 else
                 {

@@ -25,18 +25,21 @@ namespace IDFOperation
                 switch (choice)
                 {
                     case "a":
+                        Console.WriteLine("Identifying the terrorist with the most intelligence reports\n");
                         Console.WriteLine(aman.IntelligenceAnalysis());
                         break;
                     case "b":
                         Dictionary<string, int> arsenal = idf.GetStrikeAndArsenal();
+                        Console.WriteLine("Displaying all currently available strike units and their capacity\n");
                         foreach (string strike in arsenal.Keys)
                         {
                             Console.WriteLine($"Attack unit {strike} contains {arsenal[strike]} attacks.");
                         }
                         break;
                     case "c":
+                        Console.WriteLine("Determining the most dangerous terrorist based on a quality rating\n");
                         Terrorist dangourTerrorist = aman.MostDangoursTerrorist();
-                        Console.WriteLine($"the most dangours terrorist is {dangourTerrorist.name}");
+                        Console.WriteLine($"The most dangours terrorist is {dangourTerrorist.name}");
                         break;
                     case "d":
                         attack.StartAttack();
@@ -52,12 +55,13 @@ namespace IDFOperation
         }
         static void PrintMenu()
         {
-            Console.WriteLine("Here is a military management menu. Please enter your selection:" +
-                "\na. Intelligence Analysis, identifying the terrorist with the most intelligence reports" +
-                "\nb. Strike Availability, displaying all currently available strike units and their capacity" +
-                "\nc. Target Prioritization, determining the most dangerous terrorist based on a quality rating" +
-                "\nd. Strike Execution, selecting an appropriate strike unit based on the terrorist's location\n" +
-                "e. Exit");
+            Console.WriteLine("\nMilitary management menu." +
+                "\na. Intelligence Analysis" +
+                "\nb. Strike Availability" +
+                "\nc. Target Prioritization" +
+                "\nd. Strike Execution\n" +
+                "e. Exit\n" +
+                "Enter your selection:");
         }
     }
 }
