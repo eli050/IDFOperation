@@ -8,7 +8,7 @@ namespace IDFOperation.AmanClasses
     public class Aman
     {
         public List<IntelligenceMessage> intelligenceMessages ;
-        private Dictionary<string, int> terroristInformation;
+        private Dictionary<Terrorist, int> terroristInformation;
         public Aman(List <IntelligenceMessage> IntelligenceMessages)
         {
             intelligenceMessages = IntelligenceMessages;
@@ -23,27 +23,27 @@ namespace IDFOperation.AmanClasses
         }
 
         //Returns a dictionary whose key is terrorist and whose value is the number of intelligence messages it has.
-        private Dictionary<string, int> TerroristsInformation()
+        private Dictionary<Terrorist, int> TerroristsInformation()
         {
-            Dictionary<string, int> terroristsInformation = new Dictionary<string, int>();
+            Dictionary<Terrorist, int> terroristsInformation = new Dictionary<Terrorist, int>();
             foreach(IntelligenceMessage massege in intelligenceMessages)
             {
-                if (terroristsInformation.ContainsKey(massege.terrorist.name))
+                if (terroristsInformation.ContainsKey(massege.terrorist))
                 {
-                    terroristsInformation[massege.terrorist.name] += 1;
+                    terroristsInformation[massege.terrorist] += 1;
                 }
                 else
                 {
-                    terroristsInformation[massege.terrorist.name] = 1;
+                    terroristsInformation[massege.terrorist] = 1;
                 }
             }
             return terroristsInformation;
         }
 
         //Returns the terrorist with the largest number of messages
-        public string IntelligenceAnalysis()
+        public Terrorist IntelligenceAnalysis()
         {
-            string maxKey = "";
+            Terrorist maxKey = null!;
             int maxValue = 0;
             foreach(var mostInteligance in terroristInformation)
             {
@@ -53,7 +53,7 @@ namespace IDFOperation.AmanClasses
                     maxKey = mostInteligance.Key;
                 }
             }
-            return maxKey;
+            return maxKey!;
             
         }
 
@@ -147,6 +147,13 @@ namespace IDFOperation.AmanClasses
 
             Random rand = new Random();
             DateTime randomTime = time[rand.Next(20)];
+            //DateTime randomTime = new DateTime(2025, 
+            //    rand.Next(1,13), 
+            //    25, 
+            //    23, 
+            //    58, 
+            //    0);
+
             string randomPlace = location[rand.Next(3)];
             Terrorist terrorist = Terrorist.StartShow();
             IntelligenceMessage newInteliganceMassege = new IntelligenceMessage( terrorist, randomPlace, randomTime);

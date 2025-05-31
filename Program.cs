@@ -26,7 +26,7 @@ namespace IDFOperation
                 {
                     case "a":
                         Console.WriteLine("Identifying the terrorist with the most intelligence reports\n");
-                        Console.WriteLine(aman.IntelligenceAnalysis());
+                        Console.WriteLine(aman.IntelligenceAnalysis().name);
                         break;
                     case "b":
                         Dictionary<string, int> arsenal = idf.GetStrikeAndArsenal();
