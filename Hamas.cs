@@ -54,13 +54,7 @@ namespace IDFOperation.HamasClasses
             weapons = Weapons;
             status = Status;
             riskRating = RiskRating();
-            //weaponRating = new Dictionary<string, int>()
-            //{
-            //    ["knife"] = 1,
-            //    ["gun"] = 2,
-            //    ["M16"] = 3,
-            //    ["AK47"] = 3
-            //};
+            
         }
         public int RiskRating()
         {
