@@ -23,13 +23,18 @@ namespace IDFOperation.IDFClasses
             Dictionary<string, int> arsenal = new Dictionary<string, int>();
             foreach (string attack in attacks.Keys)
             {
-                if (arsenal.ContainsKey(attack))
-                {
-                    arsenal[attack] += attacks[attack].ammunitionCapacity;
-                }
+                if (attacks[attack].ammunitionCapacity > 0)
+                    if (arsenal.ContainsKey(attack))
+                    {
+                            arsenal[attack] += attacks[attack].ammunitionCapacity;
+                    }
+                    else
+                    {
+                            arsenal[attack] = attacks[attack].ammunitionCapacity;
+                    }
                 else
                 {
-                    arsenal[attack] = attacks[attack].ammunitionCapacity;
+                    DeleteStrike(attack);
                 }
             }
             return arsenal;
@@ -45,12 +50,35 @@ namespace IDFOperation.IDFClasses
             IDF show = new IDF("eyal zamir", attacks);
             return show;
         }
+        public void DeleteStrike(string attack)
+        {
+            attacks.Remove(attack); 
+        }
 
     }
     public abstract class AttackOption
     {
         public string uniqueName { get; }
-        public int ammunitionCapacity;
+        private int ammunitioncapacity;
+        public int ammunitionCapacity
+        {
+            get
+            {
+                return ammunitioncapacity;
+            }
+             
+            set
+            {
+                if (value > 0)
+                {
+                     ammunitioncapacity = value;
+                }
+                else
+                {
+                    ammunitioncapacity = 0;
+                }
+            }
+        }
         protected long fuelSupply;
         protected List<string> effectiveAgainst;
         protected string bombType;

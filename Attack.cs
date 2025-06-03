@@ -21,7 +21,7 @@ namespace IDFOperation
             lastMessage = amanShow.TheLastIntelligance(dangourTerrorist);
             
         }
-        public AttackOption? RelevantUnit()
+        public AttackOption RelevantUnit()
         {
             switch (lastMessage.lastLocation)
             {
@@ -32,7 +32,7 @@ namespace IDFOperation
                 case "open area":
                     return IdfShow.attacks["M109"];
                 default:
-                    return null;
+                    return IdfShow.attacks["Hermes 460"];
 
             }
         }
