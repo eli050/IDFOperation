@@ -65,7 +65,7 @@ namespace IDFOperation.AmanClasses
 
             foreach ( IntelligenceMessage massege in intelligenceMessages)
             {
-                if( massege.terrorist.riskRating > score )
+                if( massege.terrorist.riskRating > score && massege.terrorist.status == "live")
                 {
                     score = massege.terrorist.riskRating;
                     mostDangoursTerrorist = massege.terrorist;

@@ -23,19 +23,16 @@ namespace IDFOperation.IDFClasses
             Dictionary<string, int> arsenal = new Dictionary<string, int>();
             foreach (string attack in attacks.Keys)
             {
-                if (attacks[attack].ammunitionCapacity > 0)
-                    if (arsenal.ContainsKey(attack))
-                    {
-                            arsenal[attack] += attacks[attack].ammunitionCapacity;
-                    }
-                    else
-                    {
-                            arsenal[attack] = attacks[attack].ammunitionCapacity;
-                    }
+                
+                if (arsenal.ContainsKey(attack))
+                {
+                        arsenal[attack] += attacks[attack].ammunitionCapacity;
+                }
                 else
                 {
-                    DeleteStrike(attack);
+                        arsenal[attack] = attacks[attack].ammunitionCapacity;
                 }
+
             }
             return arsenal;
         }

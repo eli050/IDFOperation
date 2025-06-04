@@ -32,7 +32,7 @@ namespace IDFOperation
                 case "open area":
                     return IdfShow.attacks["M109"];
                 default:
-                    return IdfShow.attacks["Hermes 460"];
+                    return null;
 
             }
         }
@@ -43,14 +43,24 @@ namespace IDFOperation
             string name = Console.ReadLine()!;
             DateTime dateTime = DateTime.Now;
             AttackOption attackOption = RelevantUnit();
-            Console.WriteLine($"\nDate of attack: {dateTime}\n" +
+            if (attackOption.ammunitionCapacity > 0 && dangourTerrorist.status == "live")
+            {
+                Console.WriteLine($"\nDate of attack: {dateTime}\n" +
                 $"Officer: {name}\n" +
                 $"Attack unit: {attackOption.uniqueName}\n" +
                 $"Target:  {dangourTerrorist.name}\n " +
                 $"Location: {lastMessage.lastLocation}\n" +
-                $"Intel date: {lastMessage.timeStemp}\n" 
+                $"Intel date: {lastMessage.timeStemp}\n"
                 );
-            attackOption.ammunitionCapacity -= 1;
+                attackOption.ammunitionCapacity -= 1;
+                dangourTerrorist.status = "dead";
+                dangourTerrorist = amanShow.MostDangoursTerrorist();
+
+            }
+            else
+            {
+                Console.WriteLine("There is no suitable strike unit for this terrorist.");
+            }
 
         }
     }

@@ -37,7 +37,7 @@ namespace IDFOperation.HamasClasses
     {
         public string name { get; }
         public int runk { get;}
-        public string status { get; }
+        public string status { get; set; }
         private List <string> weapons;
       static  Dictionary<string, int> weaponRating = new Dictionary<string, int>
       {
