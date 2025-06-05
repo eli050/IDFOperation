@@ -2,6 +2,7 @@
 using IDFOperation.AmanClasses;
 using IDFOperation.IDFClasses;
 using IDFOperation.HamasClasses;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IDFOperation
 {
@@ -54,14 +55,25 @@ namespace IDFOperation
                 );
                 attackOption.ammunitionCapacity -= 1;
                 dangourTerrorist.status = "dead";
-                dangourTerrorist = amanShow.MostDangoursTerrorist();
-
             }
             else
             {
                 Console.WriteLine("There is no suitable strike unit for this terrorist.");
             }
-
+            dangourTerrorist = amanShow.MostDangoursTerrorist();
+            if (dangourTerrorist != null)
+            {
+            lastMessage = amanShow.TheLastIntelligance(dangourTerrorist);
+            }
+            else
+            {
+                Console.WriteLine("not terrorist found, exit from the procces");
+                lastMessage = null;
+            }
+        }
+        public bool TerroristsExist()
+        {
+            return lastMessage != null;
         }
     }
 }

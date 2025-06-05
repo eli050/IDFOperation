@@ -39,10 +39,11 @@ namespace IDFOperation
                     case "c":
                         Console.WriteLine("Determining the most dangerous terrorist based on a quality rating\n");
                         Terrorist dangourTerrorist = aman.MostDangoursTerrorist();
-                        Console.WriteLine($"The most dangours terrorist is {dangourTerrorist.name}");
+                        Console.WriteLine($"The most dangours terrorist is: {dangourTerrorist.name}");
                         break;
                     case "d":
                         attack.StartAttack();
+                        NotExit = attack.TerroristsExist();
                         break;
                     case "e":
                         NotExit = false;
