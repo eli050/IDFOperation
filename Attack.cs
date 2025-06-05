@@ -2,6 +2,7 @@
 using IDFOperation.AmanClasses;
 using IDFOperation.IDFClasses;
 using IDFOperation.HamasClasses;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IDFOperation
 {
@@ -21,7 +22,7 @@ namespace IDFOperation
             lastMessage = amanShow.TheLastIntelligance(dangourTerrorist);
             
         }
-        public AttackOption? RelevantUnit()
+        public AttackOption RelevantUnit()
         {
             switch (lastMessage.lastLocation)
             {
@@ -43,15 +44,36 @@ namespace IDFOperation
             string name = Console.ReadLine()!;
             DateTime dateTime = DateTime.Now;
             AttackOption attackOption = RelevantUnit();
-            Console.WriteLine($"\nDate of attack: {dateTime}\n" +
+            if (attackOption.ammunitionCapacity > 0 && dangourTerrorist.status == "live")
+            {
+                Console.WriteLine($"\nDate of attack: {dateTime}\n" +
                 $"Officer: {name}\n" +
                 $"Attack unit: {attackOption.uniqueName}\n" +
                 $"Target:  {dangourTerrorist.name}\n " +
                 $"Location: {lastMessage.lastLocation}\n" +
-                $"Intel date: {lastMessage.timeStemp}\n" 
+                $"Intel date: {lastMessage.timeStemp}\n"
                 );
-            attackOption.ammunitionCapacity -= 1;
-
+                attackOption.ammunitionCapacity -= 1;
+                dangourTerrorist.status = "dead";
+            }
+            else
+            {
+                Console.WriteLine("There is no suitable strike unit for this terrorist.");
+            }
+            dangourTerrorist = amanShow.MostDangoursTerrorist();
+            if (dangourTerrorist != null)
+            {
+            lastMessage = amanShow.TheLastIntelligance(dangourTerrorist);
+            }
+            else
+            {
+                Console.WriteLine("not terrorist found, exit from the procces");
+                lastMessage = null;
+            }
+        }
+        public bool TerroristsExist()
+        {
+            return lastMessage != null;
         }
     }
 }

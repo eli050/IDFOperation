@@ -17,18 +17,32 @@ namespace IDFOperation.HamasClasses
             commander = Commander;
             terrorists = Terrorists;
         }
-        public bool AddTerroris(Terrorist terorist)
+        public bool AddTerroris(Terrorist terrorist)
         {
-            terrorists.Add(terorist);
+            if (terrorists.Count > 0)
+            {
+                foreach(Terrorist terro in terrorists)
+                {
+                    if (terrorist.name == terro.name)
+                    {
+                        return false;
+                    }
+                }
+            }
+            terrorists.Add(terrorist);
             return true;
         }
         public static Hamas StartShow()
         {
             List<Terrorist> terrorist = new List<Terrorist>();
             Hamas show = new Hamas("azadin el hadad", terrorist);
-            for (int _ = 0; _ < 5; _++)
+            while(terrorist.Count < 5)
             {
-                show.AddTerroris(Terrorist.StartShow());
+
+                if (show.AddTerroris(Terrorist.StartShow()))
+                {
+
+                }
             }
             return show;
         }
@@ -37,7 +51,7 @@ namespace IDFOperation.HamasClasses
     {
         public string name { get; }
         public int runk { get;}
-        public string status { get; }
+        public string status { get; set; }
         private List <string> weapons;
       static  Dictionary<string, int> weaponRating = new Dictionary<string, int>
       {
@@ -107,7 +121,9 @@ namespace IDFOperation.HamasClasses
             };
             string name = Terrorists[rund.Next(Terrorists.Count)];
             int runk = rund.Next(10);
-            string status = statuses[rund.Next(2)];
+            //string status = statuses[rund.Next(2)];
+            string status = "live";
+
             Terrorist terrorist = new Terrorist(name, runk, status, gunsT);
             return terrorist;
         }
